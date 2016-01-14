@@ -23,3 +23,17 @@ D:\NewTools\AppuimTestTools\AppuimTestTools\bin\Debug\Ivony.Html.Forms.dll
 D:\NewTools\AppuimTestTools\AppuimTestTools\bin\Debug\Ivony.Html.Parser.dll
 D:\NewTools\AppuimTestTools\AppuimTestTools\bin\Debug\Ivony.Html.Web.dll
 D:\NewTools\AppuimTestTools\AppuimTestTools\bin\Debug\Ivony.Html.Web.Mvc.dll
+C:\AppuimTestTools\bin\Debug\AppuimTestTools.exe.config
+C:\AppuimTestTools\obj\Debug\AppuimTestTools.exe
+C:\AppuimTestTools\obj\Debug\AppuimTestTools.pdb
+C:\AppuimTestTools\bin\Debug\AppuimTestTools.exe
+C:\AppuimTestTools\bin\Debug\AppuimTestTools.pdb
+C:\AppuimTestTools\bin\Debug\appium-dotnet-driver.xml
+C:\AppuimTestTools\bin\Debug\Castle.Core.xml
+C:\AppuimTestTools\bin\Debug\Newtonsoft.Json.xml
+C:\AppuimTestTools\bin\Debug\WebDriver.xml
+C:\AppuimTestTools\bin\Debug\WebDriver.Support.xml
+C:\AppuimTestTools\obj\Debug\AppuimTestTools.csprojResolveAssemblyReference.cache
+C:\AppuimTestTools\obj\Debug\AppuimTestTools.Form1.resources
+C:\AppuimTestTools\obj\Debug\AppuimTestTools.Properties.Resources.resources
+C:\AppuimTestTools\obj\Debug\AppuimTestTools.csproj.GenerateResource.Cache
