@@ -98,6 +98,7 @@
     <Compile Include="Utils.cs" />
     <Compile Include="测试脚本\Demo脚本\demo01.cs" />
     <Compile Include="测试脚本\Demo脚本\demo02.cs" />
+    <Compile Include="测试脚本\Demo脚本\demo03.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

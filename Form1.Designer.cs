@@ -33,9 +33,11 @@
             this.查找手机ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置结果保存路径ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.获取最新的APKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.设置SDK的路径ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.比较测试结果ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lb_respath = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,7 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -69,7 +71,8 @@
             this.文件ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.查找手机ToolStripMenuItem,
             this.设置结果保存路径ToolStripMenuItem,
-            this.获取最新的APKToolStripMenuItem});
+            this.获取最新的APKToolStripMenuItem,
+            this.设置SDK的路径ToolStripMenuItem});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
             this.文件ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.文件ToolStripMenuItem.Text = "文件";
@@ -92,6 +95,13 @@
             this.获取最新的APKToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.获取最新的APKToolStripMenuItem.Text = "获取最新的APK";
             this.获取最新的APKToolStripMenuItem.Click += new System.EventHandler(this.获取最新的APKToolStripMenuItem_Click);
+            // 
+            // 设置SDK的路径ToolStripMenuItem
+            // 
+            this.设置SDK的路径ToolStripMenuItem.Name = "设置SDK的路径ToolStripMenuItem";
+            this.设置SDK的路径ToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.设置SDK的路径ToolStripMenuItem.Text = "设置SDK的路径";
+            this.设置SDK的路径ToolStripMenuItem.Click += new System.EventHandler(this.设置SDK的路径ToolStripMenuItem_Click);
             // 
             // 操作ToolStripMenuItem
             // 
@@ -120,6 +130,16 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "设置相关";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(23, 118);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "刷新";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // comboBox1
             // 
@@ -216,16 +236,6 @@
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(23, 118);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "刷新";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -272,6 +282,8 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.ToolStripMenuItem 获取最新的APKToolStripMenuItem;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripMenuItem 设置SDK的路径ToolStripMenuItem;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
 

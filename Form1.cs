@@ -124,6 +124,18 @@ namespace AppuimTestTools
                 this.comboBox1.SelectedIndex = 0;
             }
         }
+
+        private void 设置SDK的路径ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == this.folderBrowserDialog1.ShowDialog())
+            {
+                Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                cfa.AppSettings.Settings["androidSDKPath"].Value = this.folderBrowserDialog1.SelectedPath;
+                cfa.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("appSettings");
+                //refresh();
+            }
+        }
     }
     public class selectItem
     {
