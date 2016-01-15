@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.IO;
 
 namespace AppuimTestTools
 {
@@ -16,6 +17,8 @@ namespace AppuimTestTools
         public string Desc;
         protected Android android;
         private RichTextBox rt;
+        private string ResultPath;
+        private int Pic_Count;
         public BaseClass()
         {
 
@@ -28,6 +31,12 @@ namespace AppuimTestTools
         {
             rt = r;
             rt.Text = "";
+        }
+        public void setResultPath(string path)
+        {
+            ResultPath = path;
+            ResultPath += "\\" + Name + "_" + DateTime.Now.ToString("yyyyMMddhhmm") + "\\";
+            Pic_Count = 0;
         }
         public virtual void Run()
         {
@@ -51,6 +60,22 @@ namespace AppuimTestTools
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
+        #region 保存截图处理
+        protected void SaveScreenSnap(string name)
+        {
+            Pic_Count++;
+            string savename = ResultPath + String.Format("{0:000}", Pic_Count) + "_" + name +".png";
+            var pic = android.driver.GetScreenshot();
+            if(!Directory.Exists(ResultPath))
+            {
+                Directory.CreateDirectory(ResultPath);
+            }
+            Thread.Sleep(200);
+            pic.SaveAsFile(savename, System.Drawing.Imaging.ImageFormat.Png);
+        }
+
+        #endregion
+
         #region 显示日志的处理
         private delegate void SetLogdeltegate(string text);
         protected void Log(string text)

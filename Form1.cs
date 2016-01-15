@@ -47,7 +47,7 @@ namespace AppuimTestTools
         {
             selectITEM.function.init(selectITEM.deviceID,selectITEM.apkPath);
             selectITEM.function.setLogRT(this.richTextBox1);
-
+            selectITEM.function.setResultPath(ConfigurationManager.AppSettings["ResultPath"]);
             Thread t = new Thread(new ThreadStart(selectITEM.function.Run));
             t.Start();
             //selectITEM.function.Run();
@@ -141,7 +141,17 @@ namespace AppuimTestTools
                 cfa.AppSettings.Settings["androidSDKPath"].Value = this.folderBrowserDialog1.SelectedPath;
                 cfa.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
-                //refresh();
+            }
+        }
+
+        private void 设置结果保存路径ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == this.folderBrowserDialog1.ShowDialog())
+            {
+                Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                cfa.AppSettings.Settings["ResultPath"].Value = this.folderBrowserDialog1.SelectedPath;
+                cfa.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("appSettings");
             }
         }
     }

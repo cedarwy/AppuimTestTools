@@ -88,6 +88,7 @@
             this.设置结果保存路径ToolStripMenuItem.Name = "设置结果保存路径ToolStripMenuItem";
             this.设置结果保存路径ToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.设置结果保存路径ToolStripMenuItem.Text = "设置结果保存路径";
+            this.设置结果保存路径ToolStripMenuItem.Click += new System.EventHandler(this.设置结果保存路径ToolStripMenuItem_Click);
             // 
             // 获取最新的APKToolStripMenuItem
             // 
