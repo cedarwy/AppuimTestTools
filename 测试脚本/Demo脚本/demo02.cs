@@ -16,17 +16,24 @@ namespace AppuimTestTools.Demo脚本
         }
         public override void Run()
         {
+            Log("启动app");
+            android.driver.LaunchApp();
+            Log("启动完成");
             android.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.Parse("10000"));
             if (android.driver.FindElementById("com.lthealth.iwo:id/viewGroup").Displayed)
             {
+                Log("平移屏幕");
                 android.driver.Swipe(700, 500, 200, 500, 500);
                 android.driver.Swipe(700, 500, 200, 500, 500);
                 android.driver.Swipe(700, 500, 200, 500, 500);
+
+                Log("单击欢迎按钮");
                 android.driver.FindElementById("com.lthealth.iwo:id/bt_welcome").Click();
                 foreach(var one in android.driver.FindElementsById("com.lthealth.iwo:id/name"))
                 {
                     if(one.Text == "北京市")
                     {
+                        Log("单击选择北京市");
                         one.Click();
                         break;
                     }
@@ -34,7 +41,7 @@ namespace AppuimTestTools.Demo脚本
             }
             //android.driver.CloseApp();
 
-            
+            //android.driver.Close();
         }
     }
 }

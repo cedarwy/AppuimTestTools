@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Threading;
 
 namespace AppuimTestTools
 {
@@ -45,7 +46,11 @@ namespace AppuimTestTools
         private void button1_Click(object sender, EventArgs e)
         {
             selectITEM.function.init(selectITEM.deviceID,selectITEM.apkPath);
-            selectITEM.function.Run();
+            selectITEM.function.setLogRT(this.richTextBox1);
+
+            Thread t = new Thread(new ThreadStart(selectITEM.function.Run));
+            t.Start();
+            //selectITEM.function.Run();
         }
         private void LoadAllClass()
         {
