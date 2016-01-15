@@ -118,8 +118,11 @@ namespace AppuimTestTools
             {
                 this.comboBox1.Items.Clear();
                 string d = Utils.GetDevice(ConfigurationManager.AppSettings["androidSDKPath"]);
-                d = d.Replace("List of devices attached\r\n", "");
-                d = d.Replace("\tdevice\r\n\r\n", "");
+                d = d.Replace("\r\n", "");
+                d = d.Replace("\t", "");
+                d = d.Replace("List of devices attached", "");
+                d = d.Replace("device", "");
+                d = d.Replace(" ", "");
                 this.comboBox1.Items.Add(d);
                 this.comboBox1.SelectedIndex = 0;
             }
