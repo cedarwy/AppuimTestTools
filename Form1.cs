@@ -42,7 +42,11 @@ namespace AppuimTestTools
             //this.comboBox1.Items.Add("A10ABMMVRGF2");
             
         }
-
+        private void refresh()
+        {
+            this.lb_respath.Text = ConfigurationManager.AppSettings["ResultPath"];
+            this.lb_sdkpath.Text = ConfigurationManager.AppSettings["androidSDKPath"]
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             selectITEM.function.init(selectITEM.deviceID,selectITEM.apkPath);
@@ -141,6 +145,7 @@ namespace AppuimTestTools
                 cfa.AppSettings.Settings["androidSDKPath"].Value = this.folderBrowserDialog1.SelectedPath;
                 cfa.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
+                refresh();
             }
         }
 
@@ -152,6 +157,7 @@ namespace AppuimTestTools
                 cfa.AppSettings.Settings["ResultPath"].Value = this.folderBrowserDialog1.SelectedPath;
                 cfa.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
+                refresh();
             }
         }
     }
