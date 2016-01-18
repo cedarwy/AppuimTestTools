@@ -40,7 +40,7 @@ namespace AppuimTestTools
                 }
             }
             //this.comboBox1.Items.Add("A10ABMMVRGF2");
-            
+            refresh();
         }
         private void refresh()
         {
@@ -49,9 +49,16 @@ namespace AppuimTestTools
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            selectITEM.apkPath = System.Environment.CurrentDirectory + "\\app-release.apk";
+            //读版本信息//并建立目录
+            apkreader reader = new apkreader(selectITEM.apkPath);
+            var list = reader.androidInfos;
+            //list[0].Settings[1].Value
+            string buildname = "build_" + list[0].Settings[1].Value;
+
             selectITEM.function.init(selectITEM.deviceID,selectITEM.apkPath);
             selectITEM.function.setLogRT(this.richTextBox1);
-            selectITEM.function.setResultPath(ConfigurationManager.AppSettings["ResultPath"]);
+            selectITEM.function.setResultPath(ConfigurationManager.AppSettings["ResultPath"] + "//" + buildname + "//");
             Thread t = new Thread(new ThreadStart(selectITEM.function.Run));
             t.Start();
             //selectITEM.function.Run();

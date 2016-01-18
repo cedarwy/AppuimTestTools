@@ -12,6 +12,7 @@ using Ivony.Html.Parser;
 using Ivony.Html;
 using mshtml;
 using System.Diagnostics;
+using System.Configuration;
 
 namespace AppuimTestTools
 {
@@ -44,13 +45,19 @@ namespace AppuimTestTools
 
         private void button3_Click(object sender, EventArgs e)
         {
+            string build1 = path_1.Substring(path_1.LastIndexOf("build"), 14);
+            string build2 = path_2.Substring(path_2.LastIndexOf("build"), 14);
+            //新建保存目录
+            string ressavePath = ConfigurationManager.AppSettings["ResultPath"] + "\\Result\\" + build1 + "vs" + build2 + "\\";
+            Directory.CreateDirectory(ressavePath);
+
             //加载路径1的文件列表
             string[] filelist = Directory.GetFiles(this.path_1);
             foreach(string one in filelist)
             {
                 string a = one.Substring(one.LastIndexOf("\\")+1);
                 FileInfo file1 = new FileInfo(path_1 + "\\" + a);
-                FileInfo file2 = new FileInfo(path_2 + "\\" + a);
+                FileInfo file2 = new FileInfo(path_2 + "\\" + a); 
                 Stream s1 = file1.OpenRead();
                 Bitmap bitmap1 = new Bitmap(s1);
                 s1.Close();
@@ -59,10 +66,10 @@ namespace AppuimTestTools
                 Bitmap bitmap2 = new Bitmap(s2);
                 s2.Close();
 
-                bool res = ImageCompareString2(bitmap1, bitmap2,a);
+                bool res = ImageCompareString2(bitmap1, bitmap2, ressavePath + "\\" + a);
                 if(!res)
                 {
-                    loadPIC(a,file1.FullName,"BUILD471",file2.FullName, "BUILD488", "Result\\" +a);
+                    loadPIC(a,file1.FullName, build1, file2.FullName, build2, ressavePath + "\\" + a);
                 }
             }
             
@@ -79,7 +86,7 @@ namespace AppuimTestTools
                 {
                     g.DrawRectangles(new Pen(Brushes.Blue, 1f), rects.ToArray());
                     g.Save();
-                    firstImage.Save("Result\\" + filename);
+                    firstImage.Save(filename);
                 }
             }
             if (rects.Count > 0)
@@ -131,7 +138,7 @@ namespace AppuimTestTools
             //中间
             HtmlElement center = doc.CreateElement("div");
             center.SetAttribute("class", "left");
-            center.InnerHtml = "<div>" + build2 + "</div><div><img style='display: block; width: 100 %;' src='" + file1 + "'></img></div>";
+            center.InnerHtml = "<div>" + build2 + "</div><div><img style='display: block; width: 100 %;' src='" + file2 + "'></img></div>";
 
             HtmlElement abc = doc.CreateElement("div");
             abc.SetAttribute("class", "abc");
@@ -157,7 +164,13 @@ namespace AppuimTestTools
         {
             this.webBrowser1.Url = new Uri("file://" + Environment.CurrentDirectory + "\\compare.html");
             //新建result目录
-            Directory.CreateDirectory(Environment.CurrentDirectory + "\\Result");
+            //Directory.CreateDirectory(Environment.CurrentDirectory + "\\Result");
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //保存html文件和比较的结果图片
 
         }
     }
