@@ -63,6 +63,7 @@ namespace AppuimTestTools
         #region 保存截图处理
         protected void SaveScreenSnap(string name)
         {
+            Thread.Sleep(300);
             Pic_Count++;
             string savename = ResultPath + String.Format("{0:000}", Pic_Count) + "_" + name +".png";
             var pic = android.driver.GetScreenshot();
@@ -70,10 +71,13 @@ namespace AppuimTestTools
             {
                 Directory.CreateDirectory(ResultPath);
             }
-            Thread.Sleep(200);
             pic.SaveAsFile(savename, System.Drawing.Imaging.ImageFormat.Png);
         }
-
+        protected void SaveScreenSnap(string name,int time)
+        {
+            Thread.Sleep(time - 300);
+            SaveScreenSnap(name);
+        }
         #endregion
 
         #region 显示日志的处理

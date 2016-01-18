@@ -45,7 +45,7 @@ namespace AppuimTestTools
         private void refresh()
         {
             this.lb_respath.Text = ConfigurationManager.AppSettings["ResultPath"];
-            this.lb_sdkpath.Text = ConfigurationManager.AppSettings["androidSDKPath"]
+            this.lb_sdkpath.Text = ConfigurationManager.AppSettings["androidSDKPath"];
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -159,6 +159,12 @@ namespace AppuimTestTools
                 ConfigurationManager.RefreshSection("appSettings");
                 refresh();
             }
+        }
+
+        private void 比较测试结果ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Compare com = new Compare();
+            com.ShowDialog();
         }
     }
     public class selectItem

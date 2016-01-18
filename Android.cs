@@ -8,14 +8,19 @@ using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Appium.Enums;
+using OpenQA.Selenium.Support.UI;
+using System.Threading;
+using OpenQA.Selenium.Appium.MultiTouch;
+using OpenQA.Selenium.Appium.Interfaces;
+using OpenQA.Selenium;
 
 namespace AppuimTestTools
 {
     public class Android
     {
-        public AppiumDriver<AndroidElement> driver;
+        public AndroidDriver<AppiumWebElement> driver;
         private Uri serverUri = new Uri("http://127.0.0.1:4723/wd/hub/");
-        public Android(string deviceID,string apkPath)
+        public Android(string deviceID, string apkPath)
         {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.SetCapability(CapabilityType.BrowserName, "");
@@ -23,8 +28,32 @@ namespace AppuimTestTools
             capabilities.SetCapability(MobileCapabilityType.PlatformVersion, "4.4.2");
             capabilities.SetCapability(MobileCapabilityType.DeviceName, deviceID);
             capabilities.SetCapability("autoLaunch", false);
-            capabilities.SetCapability(MobileCapabilityType.App, apkPath);
-            driver = new AndroidDriver<AndroidElement>(serverUri, capabilities, TimeSpan.FromSeconds(60));
+            capabilities.SetCapability(MobileCapabilityType.AppPackage, "com.lthealth.iwo");
+            capabilities.SetCapability(MobileCapabilityType.AppActivity, "com.lthealth.iwo.ui.activity.other.SplashActivity");
+            //capabilities.SetCapability(MobileCapabilityType.AppActivity, "com.lthealth.iwo.ui.activity.user.info.UserReadActivity");
+            //capabilities.SetCapability(MobileCapabilityType.App, apkPath);
+            driver = new AndroidDriver<AppiumWebElement>(serverUri, capabilities, TimeSpan.FromSeconds(60));
+        }
+        public void sleep()
+        {
+            Thread.Sleep(500);
+        }
+        public void Exit()
+        {
+            driver.Quit();
+        }
+        public bool isExit(string ID)
+        {
+            try
+            {
+                driver.FindElementById(ID);
+                return true;
+            }
+            catch (NoSuchElementException e)
+            {
+                return false;
+            }
         }
     }
+
 }

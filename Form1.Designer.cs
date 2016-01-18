@@ -37,6 +37,8 @@
             this.操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.比较测试结果ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lb_sdkpath = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lb_respath = new System.Windows.Forms.Label();
@@ -49,8 +51,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lb_sdkpath = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -117,8 +117,9 @@
             // 比较测试结果ToolStripMenuItem
             // 
             this.比较测试结果ToolStripMenuItem.Name = "比较测试结果ToolStripMenuItem";
-            this.比较测试结果ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.比较测试结果ToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.比较测试结果ToolStripMenuItem.Text = "比较测试结果";
+            this.比较测试结果ToolStripMenuItem.Click += new System.EventHandler(this.比较测试结果ToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -135,6 +136,23 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "设置相关";
+            // 
+            // lb_sdkpath
+            // 
+            this.lb_sdkpath.AutoSize = true;
+            this.lb_sdkpath.Location = new System.Drawing.Point(148, 76);
+            this.lb_sdkpath.Name = "lb_sdkpath";
+            this.lb_sdkpath.Size = new System.Drawing.Size(0, 15);
+            this.lb_sdkpath.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(20, 76);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(132, 15);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "androidSDK路径：";
             // 
             // button2
             // 
@@ -240,23 +258,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(522, 339);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 76);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(132, 15);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "androidSDK路径：";
-            // 
-            // lb_sdkpath
-            // 
-            this.lb_sdkpath.AutoSize = true;
-            this.lb_sdkpath.Location = new System.Drawing.Point(148, 76);
-            this.lb_sdkpath.Name = "lb_sdkpath";
-            this.lb_sdkpath.Size = new System.Drawing.Size(0, 15);
-            this.lb_sdkpath.TabIndex = 6;
             // 
             // Form1
             // 
