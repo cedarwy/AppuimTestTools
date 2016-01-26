@@ -42,6 +42,23 @@ namespace AppuimTestTools
         {
             driver.Quit();
         }
+        public bool isExit2(string ID)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until<bool>((d) =>
+            {
+                try
+                {
+                    IWebElement element = d.FindElement(By.Id(ID));
+                    return true;
+                }
+                catch (WebDriverException)
+                {
+                    return false;
+                }
+            });
+            return false;
+        }
         public bool isExit(string ID)
         {
             try
@@ -49,10 +66,14 @@ namespace AppuimTestTools
                 driver.FindElementById(ID);
                 return true;
             }
-            catch (NoSuchElementException e)
+            catch(WebDriverException e)
             {
                 return false;
             }
+            /*catch (NoSuchElementException e)
+            {
+                return false;
+            }*/
         }
     }
 

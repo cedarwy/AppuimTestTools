@@ -170,8 +170,18 @@ namespace AppuimTestTools
 
         private void button4_Click(object sender, EventArgs e)
         {
+            string build1 = path_1.Substring(path_1.LastIndexOf("build"), 14);
+            string build2 = path_2.Substring(path_2.LastIndexOf("build"), 14);
             //保存html文件和比较的结果图片
+            string htmlPath = ConfigurationManager.AppSettings["ResultPath"] + "\\Result\\" + build1 + "vs" + build2 + ".html";
+            string html = webBrowser1.DocumentText;
+            html = html.Replace("file:///" + ConfigurationManager.AppSettings["ResultPath"].Replace("\\","/"), "http://192.168.1.42/testpage/AndroidAPPScreen");
 
+            StreamWriter w = new StreamWriter(htmlPath, false, Encoding.UTF8);
+            w.Write(html);
+            w.Flush();
+            w.Close();
+            MessageBox.Show("保存完成");
         }
     }
 }

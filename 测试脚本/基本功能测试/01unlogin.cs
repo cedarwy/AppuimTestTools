@@ -22,7 +22,7 @@ namespace AppuimTestTools.测试脚本.基本功能测试
             Log("启动app");
             android.driver.LaunchApp();
             Log("启动完成");
-            android.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.Parse("5"));
+            //android.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
             /*出现初次启动页处理*/
             if (android.isExit("com.lthealth.iwo:id/viewGroup"))
             {

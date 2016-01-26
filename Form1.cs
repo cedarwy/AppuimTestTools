@@ -173,6 +173,34 @@ namespace AppuimTestTools
             Compare com = new Compare();
             com.ShowDialog();
         }
+
+        private void 相同界面时间比较ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Compare2 com = new Compare2();
+            com.ShowDialog();
+        }
+
+        private void 连续4次截图ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ConfigurationManager.AppSettings["androidSDKPath"] != "")
+            {
+                string filename1 = "screenshot1.png";
+                Utils.GetScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename1);
+                string filename2 = "screenshot2.png";
+                Utils.GetScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename2);
+                string filename3 = "screenshot3.png";
+                Utils.GetScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename3);
+                string filename4 = "screenshot4.png";
+                Utils.GetScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename4);
+                if (ConfigurationManager.AppSettings["ResultPath"] != "")
+                {
+                    Utils.SaveScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename1, ConfigurationManager.AppSettings["ResultPath"]);
+                    Utils.SaveScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename2, ConfigurationManager.AppSettings["ResultPath"]);
+                    Utils.SaveScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename3, ConfigurationManager.AppSettings["ResultPath"]);
+                    Utils.SaveScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename4, ConfigurationManager.AppSettings["ResultPath"]);
+                }
+            }
+        }
     }
     public class selectItem
     {
