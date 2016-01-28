@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Threading;
 
 namespace AppuimTestTools
 {
@@ -39,13 +40,28 @@ namespace AppuimTestTools
                 }
             }
             //this.comboBox1.Items.Add("A10ABMMVRGF2");
-            
+            refresh();
         }
-
+        private void refresh()
+        {
+            this.lb_respath.Text = ConfigurationManager.AppSettings["ResultPath"];
+            this.lb_sdkpath.Text = ConfigurationManager.AppSettings["androidSDKPath"];
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            selectITEM.apkPath = System.Environment.CurrentDirectory + "\\app-release.apk";
+            //读版本信息//并建立目录
+            apkreader reader = new apkreader(selectITEM.apkPath);
+            var list = reader.androidInfos;
+            //list[0].Settings[1].Value
+            string buildname = "build_" + list[0].Settings[1].Value;
+
             selectITEM.function.init(selectITEM.deviceID,selectITEM.apkPath);
-            selectITEM.function.Run();
+            selectITEM.function.setLogRT(this.richTextBox1);
+            selectITEM.function.setResultPath(ConfigurationManager.AppSettings["ResultPath"] + "//" + buildname + "//");
+            Thread t = new Thread(new ThreadStart(selectITEM.function.Run));
+            t.Start();
+            //selectITEM.function.Run();
         }
         private void LoadAllClass()
         {
@@ -118,8 +134,11 @@ namespace AppuimTestTools
             {
                 this.comboBox1.Items.Clear();
                 string d = Utils.GetDevice(ConfigurationManager.AppSettings["androidSDKPath"]);
-                d = d.Replace("List of devices attached\r\n", "");
-                d = d.Replace("\tdevice\r\n\r\n", "");
+                d = d.Replace("\r\n", "");
+                d = d.Replace("\t", "");
+                d = d.Replace("List of devices attached", "");
+                d = d.Replace("device", "");
+                d = d.Replace(" ", "");
                 this.comboBox1.Items.Add(d);
                 this.comboBox1.SelectedIndex = 0;
             }
@@ -133,7 +152,53 @@ namespace AppuimTestTools
                 cfa.AppSettings.Settings["androidSDKPath"].Value = this.folderBrowserDialog1.SelectedPath;
                 cfa.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
-                //refresh();
+                refresh();
+            }
+        }
+
+        private void 设置结果保存路径ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == this.folderBrowserDialog1.ShowDialog())
+            {
+                Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                cfa.AppSettings.Settings["ResultPath"].Value = this.folderBrowserDialog1.SelectedPath;
+                cfa.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("appSettings");
+                refresh();
+            }
+        }
+
+        private void 比较测试结果ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Compare com = new Compare();
+            com.ShowDialog();
+        }
+
+        private void 相同界面时间比较ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Compare2 com = new Compare2();
+            com.ShowDialog();
+        }
+
+        private void 连续4次截图ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ConfigurationManager.AppSettings["androidSDKPath"] != "")
+            {
+                string filename1 = "screenshot1.png";
+                Utils.GetScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename1);
+                string filename2 = "screenshot2.png";
+                Utils.GetScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename2);
+                string filename3 = "screenshot3.png";
+                Utils.GetScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename3);
+                string filename4 = "screenshot4.png";
+                Utils.GetScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename4);
+                if (ConfigurationManager.AppSettings["ResultPath"] != "")
+                {
+                    Utils.SaveScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename1, ConfigurationManager.AppSettings["ResultPath"]);
+                    Utils.SaveScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename2, ConfigurationManager.AppSettings["ResultPath"]);
+                    Utils.SaveScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename3, ConfigurationManager.AppSettings["ResultPath"]);
+                    Utils.SaveScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename4, ConfigurationManager.AppSettings["ResultPath"]);
+                }
             }
         }
     }
