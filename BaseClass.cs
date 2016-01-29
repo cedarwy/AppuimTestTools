@@ -35,7 +35,7 @@ namespace AppuimTestTools
         public void setResultPath(string path)
         {
             ResultPath = path;
-            ResultPath += "\\" + Name + "_" + DateTime.Now.ToString("yyyyMMddhhmm") + "\\";
+            ResultPath += "\\" + Name + "_" + DateTime.Now.ToString("yyyyMMddHHmm") + "\\";
             Pic_Count = 0;
         }
         public virtual void Run()
