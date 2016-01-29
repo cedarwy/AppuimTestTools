@@ -74,7 +74,6 @@ namespace AppuimTestTools.测试脚本.Demo脚本
             Log("返回");
 
 
-            android.driver
 
         }
 
