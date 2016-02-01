@@ -127,6 +127,7 @@
     <Compile Include="测试脚本\基本功能测试\01unlogin.cs" />
     <Compile Include="测试脚本\基本功能测试\02login.cs" />
     <Compile Include="测试脚本\界面跳转测试\mytest.cs" />
+    <Compile Include="测试脚本\私有脚本\gameclick01.cs" />
     <EmbeddedResource Include="Compare.resx">
       <DependentUpon>Compare.cs</DependentUpon>
     </EmbeddedResource>
