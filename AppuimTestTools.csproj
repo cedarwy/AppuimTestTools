@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AndroidXml, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\环境\vs-类库\AndroidXml.dll</HintPath>
+    </Reference>
     <Reference Include="appium-dotnet-driver, Version=1.5.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Appium.WebDriver.1.5.0.1\lib\net40\appium-dotnet-driver.dll</HintPath>
       <Private>True</Private>
@@ -124,6 +128,8 @@
     <Compile Include="测试脚本\Demo脚本\demo01.cs" />
     <Compile Include="测试脚本\Demo脚本\demo02.cs" />
     <Compile Include="测试脚本\Demo脚本\demo03.cs" />
+    <Compile Include="测试脚本\Demo脚本\demo04.cs" />
+    <Compile Include="测试脚本\Demo脚本\demo05.cs" />
     <Compile Include="测试脚本\基本功能测试\01unlogin.cs" />
     <Compile Include="测试脚本\基本功能测试\02login.cs" />
     <Compile Include="测试脚本\界面跳转测试\mytest.cs" />
@@ -163,12 +169,6 @@
     <Content Include="compare.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AndroidXml\AndroidXml.csproj">
-      <Project>{4afc9e0b-6fb1-4d99-afc4-29f698442900}</Project>
-      <Name>AndroidXml</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
