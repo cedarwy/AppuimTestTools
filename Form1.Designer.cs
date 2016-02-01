@@ -37,6 +37,9 @@
             this.操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.比较测试结果ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.相同界面时间比较ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.手机操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.连续4次截图ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.解apk包ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lb_sdkpath = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,8 +55,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.手机操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.连续4次截图ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button3 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -68,7 +71,7 @@
             this.手机操作ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(972, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1094, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -133,6 +136,29 @@
             this.相同界面时间比较ToolStripMenuItem.Text = "相同界面时间比较";
             this.相同界面时间比较ToolStripMenuItem.Click += new System.EventHandler(this.相同界面时间比较ToolStripMenuItem_Click);
             // 
+            // 手机操作ToolStripMenuItem
+            // 
+            this.手机操作ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.连续4次截图ToolStripMenuItem,
+            this.解apk包ToolStripMenuItem});
+            this.手机操作ToolStripMenuItem.Name = "手机操作ToolStripMenuItem";
+            this.手机操作ToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.手机操作ToolStripMenuItem.Text = "手机操作";
+            // 
+            // 连续4次截图ToolStripMenuItem
+            // 
+            this.连续4次截图ToolStripMenuItem.Name = "连续4次截图ToolStripMenuItem";
+            this.连续4次截图ToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.连续4次截图ToolStripMenuItem.Text = "连续4次截图";
+            this.连续4次截图ToolStripMenuItem.Click += new System.EventHandler(this.连续4次截图ToolStripMenuItem_Click);
+            // 
+            // 解apk包ToolStripMenuItem
+            // 
+            this.解apk包ToolStripMenuItem.Name = "解apk包ToolStripMenuItem";
+            this.解apk包ToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.解apk包ToolStripMenuItem.Text = "解apk包";
+            this.解apk包ToolStripMenuItem.Click += new System.EventHandler(this.解apk包ToolStripMenuItem_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lb_sdkpath);
@@ -170,7 +196,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(23, 155);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(75, 39);
             this.button2.TabIndex = 4;
             this.button2.Text = "刷新";
             this.button2.UseVisualStyleBackColor = true;
@@ -267,30 +293,30 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Location = new System.Drawing.Point(438, 232);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(522, 339);
+            this.richTextBox1.Size = new System.Drawing.Size(644, 339);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             // 
-            // 手机操作ToolStripMenuItem
+            // openFileDialog1
             // 
-            this.手机操作ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.连续4次截图ToolStripMenuItem});
-            this.手机操作ToolStripMenuItem.Name = "手机操作ToolStripMenuItem";
-            this.手机操作ToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
-            this.手机操作ToolStripMenuItem.Text = "手机操作";
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // 连续4次截图ToolStripMenuItem
+            // button3
             // 
-            this.连续4次截图ToolStripMenuItem.Name = "连续4次截图ToolStripMenuItem";
-            this.连续4次截图ToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.连续4次截图ToolStripMenuItem.Text = "连续4次截图";
-            this.连续4次截图ToolStripMenuItem.Click += new System.EventHandler(this.连续4次截图ToolStripMenuItem_Click);
+            this.button3.Location = new System.Drawing.Point(981, 171);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(87, 33);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "特别功能";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 583);
+            this.ClientSize = new System.Drawing.Size(1094, 583);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.listBox1);
@@ -339,6 +365,9 @@
         private System.Windows.Forms.ToolStripMenuItem 相同界面时间比较ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 手机操作ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 连续4次截图ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 解apk包ToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button button3;
     }
 }
 

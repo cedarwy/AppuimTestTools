@@ -22,7 +22,7 @@ namespace AppuimTestTools
         }
         private static string apkpath = System.Environment.CurrentDirectory + "\\app-release.apk";
         private List<BaseClass> AllClass = new List<BaseClass>();
-        private selectItem selectITEM = new selectItem();
+        public selectItem selectITEM = new selectItem();
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadAllClass();
@@ -61,6 +61,9 @@ namespace AppuimTestTools
             selectITEM.function.setResultPath(ConfigurationManager.AppSettings["ResultPath"] + "//" + buildname + "//");
             Thread t = new Thread(new ThreadStart(selectITEM.function.Run));
             t.Start();
+
+
+
             //selectITEM.function.Run();
         }
         private void LoadAllClass()
@@ -122,6 +125,14 @@ namespace AppuimTestTools
 
                         this.label3.Text = "测试名称：" + one.Name;
                         this.label4.Text = "测试描述：" + one.Desc;
+                        if(selectITEM.function.haverefresh)
+                        {
+                            this.button3.Enabled = true;
+                        }
+                        else
+                        {
+                            this.button3.Enabled = false;
+                        }
                         break;
                     }
                 }
@@ -200,6 +211,34 @@ namespace AppuimTestTools
                     Utils.SaveScreenShot(ConfigurationManager.AppSettings["androidSDKPath"], filename4, ConfigurationManager.AppSettings["ResultPath"]);
                 }
             }
+        }
+
+        private void 解apk包ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == this.openFileDialog1.ShowDialog())
+            {
+                string filename = this.openFileDialog1.FileName;
+                apkreader reader = new apkreader(filename);
+                var list = reader.androidInfos;
+                StringBuilder builder = new StringBuilder();
+                foreach (var androidInfo in list)
+                {
+                    builder.Append(string.Format("{0}:", androidInfo.Name));
+                    foreach (var setting in androidInfo.Settings)
+                    {
+                        builder.Append("{");
+                        builder.Append(string.Format("'{0}':'{1}'", setting.Name, setting.Value));
+                        builder.Append("},");
+                    }
+                    builder.Append("\n\n");
+                }
+                this.richTextBox1.Text = builder.ToString();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            selectITEM.function.Refresh();
         }
     }
     public class selectItem

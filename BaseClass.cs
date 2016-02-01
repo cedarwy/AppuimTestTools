@@ -19,14 +19,29 @@ namespace AppuimTestTools
         private RichTextBox rt;
         private string ResultPath;
         private float Pic_Count;
+        public bool haverefresh = false;
+        public bool newpackage= false;
+        public string package;
+        public string activity;
         public BaseClass()
         {
 
         }
         public void init(string deviceID, string apkpath)
         {
-            android = new Android(deviceID, apkpath);  
+            if (newpackage)
+            {
+                android = new Android(deviceID, package, activity);
+            }
+            else
+            {
+                android = new Android(deviceID, apkpath);
+            }
         }
+        /*public void init(string deviceID, string package,string activity)
+        {
+            android = new Android(deviceID, package, activity);
+        }*/
         public void setLogRT(RichTextBox r)
         {
             rt = r;
@@ -41,6 +56,10 @@ namespace AppuimTestTools
         public virtual void Run()
         {
             
+        }
+        public virtual void Refresh()
+        {
+
         }
         public int CompareTo(BaseClass obj)
         {

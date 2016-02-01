@@ -34,6 +34,18 @@ namespace AppuimTestTools
             //capabilities.SetCapability(MobileCapabilityType.App, apkPath);
             driver = new AndroidDriver<AppiumWebElement>(serverUri, capabilities, TimeSpan.FromSeconds(60));
         }
+        public Android (string deviceID,string package,string activity)
+        {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.SetCapability(CapabilityType.BrowserName, "");
+            capabilities.SetCapability(MobileCapabilityType.AppiumVersion, "1.0");
+            capabilities.SetCapability(MobileCapabilityType.PlatformVersion, "4.4.2");
+            capabilities.SetCapability(MobileCapabilityType.DeviceName, deviceID);
+            capabilities.SetCapability("autoLaunch", false);
+            capabilities.SetCapability(MobileCapabilityType.AppPackage, package);
+            capabilities.SetCapability(MobileCapabilityType.AppActivity, activity);
+            driver = new AndroidDriver<AppiumWebElement>(serverUri, capabilities, TimeSpan.FromSeconds(60));
+        }
         public void sleep()
         {
             Thread.Sleep(500);
