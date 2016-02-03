@@ -61,6 +61,22 @@ namespace AppuimTestTools.测试脚本.基本功能测试
             Log("保存昵称");
             SaveScreenSnap("修改昵称");
 
+            var one = android.driver.FindElementById("com.lthealth.iwo:id/info_authentication");
+            one.Click();
+            Log("进入实名认证");
+            SaveScreenSnap("实名认证");
+
+            var two = android.driver.FindElementById("com.lthealth.iwo:id/et_name");
+            two.SendKeys("nihao");
+
+            var fore = android.driver.FindElementById("com.lthealth.iwo:id/et_auth");
+              fore.SendKeys("110108198711308211");
+
+            var fire = android.driver.FindElementById("com.lthealth.iwo:id/ll_base_activity_left");
+            fire.Click();
+
+
+
             var f = android.driver.FindElementById("com.lthealth.iwo:id/info_modify_address");
             f.Click();
             Log("进入家庭地址");
@@ -133,8 +149,10 @@ namespace AppuimTestTools.测试脚本.基本功能测试
 
 
 
-/*com.lthealth.iwo:id/info_modify_pwd 修改密码
-    com.lthealth.iwo:id/et_set_password_activity_password_old
-     com.lthealth.iwo:id/et_set_password_activity_password1
-         com.lthealth.iwo:id/et_set_password_activity_password2
-        com.lthealth.iwo:id/tv_base_activity_right*/
+/*com.lthealth.iwo:id/info_authentications实名认证 
+com.lthealth.iwo:id/tv_base_activity_right提交
+ com.lthealth.iwo:id/et_name姓名
+ com.lthealth.iwo:id/et_auth身份证
+ com.lthealth.iwo:id/ll_add
+
+*/
